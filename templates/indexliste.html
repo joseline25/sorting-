@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Existing Array</title>
+</head>
+
+<body>
+<h2 class="jumbotron">
+    Total of Created arrays: {{count}}
+    <form method="POST" action="{% url 'newlist' %}">
+        {% csrf_token %}
+        <button>Add an array</button>
+    </form>
+</h2>
+
+
+{%for liste in listes %}
+
+<div class="card box container">
+    <br>
+    <div class="card-title">
+        <h2 class="post-title">
+            Numéro liste :{{ liste.id }}
+            <p>
+                Taille : {{ liste.taille }}
+            </p>
+        </h2>
+        <form method="POST" action="{% url 'newTag' liste.id %}">
+            {% csrf_token %}
+            <button>View tag</button>
+        </form>
+    </div>
+</div>
+
+<br>
+
+{%endfor%}
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h3>
+    La liste de {{liste.taille}} éléments est la suivante:
+</h3>
+
+</div>
+
+
+<h3><img src="data:image/png;base64,{{ data }}" height="500" width="500"/></h3>
+
+</div>
+<p>
+    {{liste.tags}}
+<form method="POST" action="{% url 'Selectiontionsort' liste.id %}">
+    {% csrf_token %}
+    <button>Selection sort</button>
+</form>
+
+<form method="POST" action="{% url 'Insertionsort' liste.id %}">
+    {% csrf_token %}
+    <button>Insertion sort</button>
+</form>
+
+<form method="POST" action="{% url 'Bublesort' liste.id %}">
+    {% csrf_token %}
+    <button>Bubble sort</button>
+</form>
+
+<form method="POST" action="{% url 'Quicksort' liste.id %}">
+    {% csrf_token %}
+    <button>Quick sort</button>
+</form>
+
+</p>
+
+{% endblock content %}
